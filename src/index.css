@@ -1,10 +1,79 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+input,
+textarea,
+select,
+button {
+  outline: none;
+}
+input {
+  line-height: normal;
+}
+label,
+button {
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+ul{
+  list-style: none;
+}
+html{
+  scroll-behavior: smooth;
+  transition: all 0.5s linear;
+}
+@font-face {
+  font-family: revicons;
+  src: url("./assets/fonts/dm-sans-latin-400.9566aaac2083dccdc16ea3f2f2135e59.woff2");
+  font-weight: 400;
+}
+@font-face {
+  font-family: revicons;
+  src: url("./assets/fonts/dm-sans-latin-500.b50824fe4ff335be8c64463129658220.woff2");
+  font-weight: 500;
+}
+@font-face {
+  font-family: revicons;
+  src: url("./assets/fonts/dm-sans-latin-700.659104546f390e057efeda29343c29b1.woff2");
+  font-weight: 700;
+}
+:root{
+    --colors-text: #343D48;
+    --colors-text_secondary: #02073E;
+    --colors-heading: #244886;
+    --heading_secondary: #0F2137;
+    --colors-background: #FFFFFF;
+    --background_secondary: #F9FBFD;
+    --colors-border_color: #E5ECF4;
+    --colors-primary: #1F3E76;
+    --colors-secondary: #25CB9E;
+    --colors-muted: #7B8188;
+    --colors-accent: #609;
+    --colors-yellow: #F6C416;
+    --font-base:"revicons", sans-serif;
+}
+
+
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family:"revicons", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--theme-ui-colors-text,#343D48);
+  background-color: var(--theme-ui-colors-background,#FFFFFF);
 }
 
 code {

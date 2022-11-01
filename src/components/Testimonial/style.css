@@ -1,0 +1,110 @@
+
+.testimonial-head{
+    padding-top: 110px;
+    text-align: center;
+}
+.testimonial-head h5{
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--colors-heading);
+    margin-bottom: 10px;
+}
+.testimonial-title{
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: var(--heading_secondary);
+}
+.testimonial-slide{
+    width: 100%;
+    max-width: 1000px;
+    margin:0 auto;
+    overflow: hidden;
+    transition: all 0.5s linear;
+}
+.testimonial-items{
+    width: 100%;
+    display: flex;
+    position: relative;
+    overflow-x: scroll;
+    transition: all 0.5s linear;
+    
+}
+.testimonial-items::-webkit-scrollbar{
+    display: none;
+    
+}
+.testimonial-item{
+    flex: 1;
+    min-width: calc(33.333% - 30px);
+    padding: 30px 20px;
+    margin: 10px 15px;
+    border: 1px solid var(--colors-border_color);
+    border-radius: 10px;
+    transition: all 0.5s linear;
+}
+.testimonial-item:hover{
+    box-shadow: 0px  4px 8px rgba(0, 0, 0, 0.3);
+}
+.testimonial-star i.fill{
+ color: goldenrod;
+}
+.testimonial-star i{
+    color: var(--colors-muted);
+   }
+.testimonial-title{
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--colors-text);
+    margin-top: 15px;
+}
+.testimonial-user-avatar{
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+}
+.testimonial-user{
+    margin-top: 1rem;
+    display: flex;
+}
+.testimonial-user-content{
+    margin-left: 15px;
+}
+.testimonial-name{
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--colors-text);
+}
+.testimonial-email{
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--colors-secondary);
+}
+
+.slide-control{
+    margin: 2rem 0;
+    justify-content: center;
+    display: flex;
+}
+.slide-prev{
+    margin-right: 2rem;
+}
+.slide-prev i, .slide-next i{
+    font-size: 24px;
+    opacity: 0.6;
+}
+.slide-prev i:hover, .slide-next i:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+    .testimonial-item{
+        min-width: calc(50% - 30px);
+    }
+}
+@media screen and (max-width: 768px) {
+    .testimonial-item{
+        min-width: calc(100% - 30px);
+    }
+}
