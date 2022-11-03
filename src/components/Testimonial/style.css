@@ -24,8 +24,6 @@
 .testimonial-items{
     width: 100%;
     display: flex;
-    position: relative;
-    overflow-x: scroll;
     transition: all 0.5s linear;
     
 }

@@ -44,7 +44,6 @@
     position: relative;
 
     background-color: #fff;
-   width: 432px;
    color: var(--colors-text);
     padding: 62px 70px 50px 40px;
     border-radius: 10px;
@@ -137,5 +136,6 @@
     }
     .function2-package:first-child{
         margin-bottom: 2rem;
+        margin-right: 0;
     }
 }

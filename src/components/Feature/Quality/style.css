@@ -39,6 +39,9 @@
     color: var(--heading_secondary);
     margin-bottom: 10px;
 }
+.quality-item-content{
+    text-align: left !important;
+}
 .quality-desc{
     font-size: 16px;
     line-height: 28px;

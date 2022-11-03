@@ -39,7 +39,56 @@ const testUser= [
         name:'Denny Hilguston',
         email :'@denny.hil',
         
+    },
+    {
+        id: 5,
+        star: 3,
+        title: 'Layout and organized layers',
+        desc: "Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.",
+        img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQTTHl49KjkuYhMImb5ZhwYqdmsY8u2IBKnw&usqp=CAU',
+        name:'Denny Hilguston',
+        email :'@denny.hil',
+        
     }
+    ,
+    {
+        id: 6,
+        star: 4,
+        title: 'Layout and organized layers',
+        desc: "Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.",
+        img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn2-3cmIY_tWwFo0LQ-Nb5l3M04H7X86ECiA&usqp=CAU',
+        name:'Denny Hilguston',
+        email :'@denny.hil',
+        
+    },
+    {
+        id: 7,
+        star: 5,
+        title: 'Layout and organized layers',
+        desc: "Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.",
+        img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe7mWcFQ-e97tkOw1TN2252vi4gLuYMTbvXQ&usqp=CAU',
+        name:'Denny Hilguston',
+        email :'@denny.hil',
+    },
+    {
+        id: 8,
+        star: 4,
+        title: 'Modern look & trending design',
+        desc: "Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.",
+        img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn2-3cmIY_tWwFo0LQ-Nb5l3M04H7X86ECiA&usqp=CAU',
+        name:'Denny Hilguston',
+        email :'@denny.hil',
+    },
+    {
+        id: 9,
+        star: 4,
+        title: 'Modern look & trending design',
+        desc: "Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.",
+        img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn2-3cmIY_tWwFo0LQ-Nb5l3M04H7X86ECiA&usqp=CAU',
+        name:'Denny Hilguston',
+        email :'@denny.hil',
+    },
+
 ]
 
 
@@ -64,25 +113,35 @@ function Testimonial() {
         return arr;
         
     }
-    
+    let count = 0;
     const  handleSlide= (dir) =>{
         const widthScroll= slideRef.current.offsetWidth;
         const items= document.querySelectorAll('.testimonial-item');
         const itemWidth= items[0].offsetWidth;
         const amountScroll= Math.round(widthScroll / itemWidth);
+        const widthSlide= itemWidth* items.length + items.length*(30);
+        console.log(items.length, itemWidth);
+        console.log(widthSlide);
         
         if(dir=== "prev"){
-            // slideRef.current.scrollLeft -=widthScroll;
-           for(let i=0; i< amountScroll; i++){
-            slideRef.current.prepend(document.querySelectorAll('.testimonial-item')[items.length-1]);
-           }
+
+            count -= (itemWidth * amountScroll + amountScroll*30);
+            console.log(count);
+            if (count < 0) {
+              count = widthSlide - itemWidth * amountScroll -amountScroll*30;
+            }
+        
+            slideRef.current.style.transform = `translateX(${-count}px)`;
+
           }
         else{
-        // slideRef.current.scrollLeft +=widthScroll;
-        for(let i=0; i< amountScroll; i++){
-            slideRef.current.appendChild(document.querySelectorAll('.testimonial-item')[0]);
-
-           }
+            
+            count += (itemWidth  * amountScroll +amountScroll*30);
+            console.log(count);
+            if (count > widthSlide - itemWidth * amountScroll) {
+                count = 0;
+            }
+            slideRef.current.style.transform = `translateX(${-count}px)`;
         }
        
     }
@@ -99,7 +158,7 @@ function Testimonial() {
                     ref={slideRef}
                 className="testimonial-items">
                     {testUser.map((item,index) =>(
-                        <div key={item.id} className="testimonial-item" style={{transform: `translateX(-${index-1 * 100}%)`}}>
+                        <div key={item.id} className="testimonial-item" >
                             <div className="testimonial-star">
                                 {renderStar(item.star).map(item =>(
                                     <i key={item.id} className={`fa-solid fa-star ${item.value ? 'fill': ''}`}></i>
