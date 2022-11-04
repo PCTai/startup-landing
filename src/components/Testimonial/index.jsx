@@ -95,22 +95,10 @@ const testUser= [
 function Testimonial() {
 
     const renderStar=(amount)=>{
-        let arr =[];
-        for( let i=0; i< 5; i++){
-            if(i<amount-1){
-                arr.push({
-                    id: i,
-                    value: true
-                });
-            }
-            else{
-                arr.push({
-                    id: i,
-                    value: false
-                })
-            }
-        }
-        return arr;
+        return [...Array(5).keys()].map(index =>({
+            id: index,
+            value: index<amount-1
+        }))
         
     }
     let count = 0;
@@ -120,13 +108,13 @@ function Testimonial() {
         const itemWidth= items[0].offsetWidth;
         const amountScroll= Math.round(widthScroll / itemWidth);
         const widthSlide= itemWidth* items.length + items.length*(30);
-        console.log(items.length, itemWidth);
-        console.log(widthSlide);
+        // console.log(items.length, itemWidth);
+        console.log(widthScroll);
         
         if(dir=== "prev"){
 
             count -= (itemWidth * amountScroll + amountScroll*30);
-            console.log(count);
+            // console.log(count);
             if (count < 0) {
               count = widthSlide - itemWidth * amountScroll -amountScroll*30;
             }
@@ -137,7 +125,7 @@ function Testimonial() {
         else{
             
             count += (itemWidth  * amountScroll +amountScroll*30);
-            console.log(count);
+            // console.log(count);
             if (count > widthSlide - itemWidth * amountScroll) {
                 count = 0;
             }

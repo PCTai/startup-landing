@@ -1,5 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Navbar.css'
+
+const navLink= [
+    // {
+    //     id: 1,
+    //     name: 'home'
+    // },
+    {
+        id: 2,
+        name: 'feature'
+    },
+    {
+        id: 3,
+        name: 'testimonial'
+    },
+    {
+        id: 4,
+        name: 'price'
+    }
+]
+
 
 function Navbar() {
     const [active, setActive]= useState('home');
@@ -8,11 +28,35 @@ function Navbar() {
     const showMenuLayout= () =>{
         setIsShhowMenu(!isShowMenu);
     }
-    window.addEventListener('scroll', function(){
-        const scrollHeight = window.scrollY;
-        setHeightScroll(scrollHeight);
+    
+
+    useEffect(()=>{
+        navLink.forEach((item) =>{
+            const itemScrollNav= document.querySelector(`#${item.name}`);
+            if(heightScroll<document.querySelector(`#feature`).offsetTop ){
+                setActive('home');
+            }
+            if(heightScroll>=itemScrollNav.offsetTop-25 && heightScroll<=itemScrollNav.offsetTop+ itemScrollNav.offsetHeight){
+                
+                setActive(item.name);
+            }
+        })
+    },[heightScroll])
+    useEffect(() =>{
         
-    })
+
+        window.addEventListener('scroll', function(){
+            const scrollHeight = window.scrollY;
+            setHeightScroll(scrollHeight);
+            
+        })
+
+        return window.removeEventListener('scroll', function(){
+            const scrollHeight = window.scrollY;
+            setHeightScroll(scrollHeight);
+            
+        })
+    },[])
 
     return ( 
         <div className={`navbar-wrapper ${heightScroll>0? 'navbar-white':''}`}>
@@ -22,16 +66,16 @@ function Navbar() {
                     <h3 className="logo">Startup Landing</h3>
                 </div>
                 <ul className="nav-links ">
-                    <li onClick={()=>setActive('home')} className={`nav-link ${active==='home'?'active': ''}`}>
+                    <li onClick={()=>setActive('home')} className={`nav-link ${active==='home' ? 'active': ''}`}>
                         <a href="#">Home</a>
                     </li>
-                    <li onClick={()=>setActive('feature')} className={`nav-link ${active==='feature'?'active': ''}`}>
+                    <li onClick={()=>setActive('feature')} className={`nav-link ${active==='feature' ? 'active': ''}`}>
                         <a href="#feature">Features</a>
                     </li>
                     <li onClick={()=>setActive('testimonial')} className={`nav-link ${active==='testimonial'?'active': ''}`}>
                         <a href="#testimonial">Testimonial</a>
                     </li>
-                    <li onClick={()=>setActive('pricing')} className={`nav-link ${active==='pricing'?'active': ''}`}>
+                    <li onClick={()=>setActive('price')} className={`nav-link ${active==='price'?'active': ''}`}>
                         <a href="#price">Pricing</a>
                     </li>
                 </ul>

@@ -21,7 +21,7 @@
   font-family: var(--font-base);
 }
 .btn-primary:hover{
-  box-shadow: 0 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 .btn:hover{
   color: var(--colors-text);
