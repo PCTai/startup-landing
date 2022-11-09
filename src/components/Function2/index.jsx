@@ -1,48 +1,10 @@
 import './style.css'
-const packages = [
-    {
-      id: 1,
-      title: "Free Plan",
-      recommended: false,
-      for: "For small teams or office",
-      benefits: 
-        {
-          allowed: [
-            "Ultimate access to all course, exercises and assessments",
-            "Free access for all kind of exercise corrections with downloads.",
-            "Total assessment corrections with free download access system",
-          ],
-          rejected: [
-            "Unlimited download of courses on the mobile app contents",
-            "Download and print courses and exercises in PDF",
-          ],
-        },
-   
-    },
-    {
-      id: 2,
-      title: "Premium",
-      recommended: true,
-      for: "For startup enterprise",
-      price: 29.99,
-      benefits: 
-        {
-          allowed: [
-            "Ultimate access to all course, exercises and assessments",
-            "Free access for all kind of exercise corrections with downloads.",
-            "Total assessment corrections with free download access system",
-            "Unlimited download of courses on the mobile app contents",
-            "Download and print courses and exercises in PDF",
-          ],
-          rejected: [],
-        },
-    },
-  ];
+import {packages} from '../../constants'
 
 function Function() {
     return ( 
-        <div className="function2-wrapper">
-            <div className="function2 wrapper">
+        <div id='price'  className="function2-wrapper">
+            <div  className="function2 wrapper">
                 <div className="function2-container">
                     <div className="function2-head">
                         <h5>WHATS THE FUNCTION</h5>

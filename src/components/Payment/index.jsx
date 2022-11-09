@@ -2,7 +2,7 @@ import './style.css'
 
 function Payment() {
     return ( 
-       <div id='price' className="payment-wrapper">
+       <div  className="payment-wrapper">
          <div className="payment wrapper">
            <div className="payment-layer"> <div className="payment-img v2">
                 <img src="https://startup-app-modern.vercel.app/_next/static/images/payment-thumb-35f2232fc6cc72533e814182ef24f367.png" alt="" />

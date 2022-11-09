@@ -1,24 +1,8 @@
+import { useRef } from 'react';
 import { useEffect, useState } from 'react';
 import './Navbar.css'
+import {navLink} from '../../constants'
 
-const navLink= [
-    // {
-    //     id: 1,
-    //     name: 'home'
-    // },
-    {
-        id: 2,
-        name: 'feature'
-    },
-    {
-        id: 3,
-        name: 'testimonial'
-    },
-    {
-        id: 4,
-        name: 'price'
-    }
-]
 
 
 function Navbar() {
@@ -28,17 +12,37 @@ function Navbar() {
     const showMenuLayout= () =>{
         setIsShhowMenu(!isShowMenu);
     }
-    
-
-    useEffect(()=>{
-        navLink.forEach((item) =>{
+    const heightNav= useRef();
+    let heigthFeature;
+    if(heightScroll>0){
+        heigthFeature=navLink.map((item, index) =>{
             const itemScrollNav= document.querySelector(`#${item.name}`);
-            if(heightScroll<document.querySelector(`#feature`).offsetTop ){
-                setActive('home');
-            }
-            if(heightScroll>=itemScrollNav.offsetTop-25 && heightScroll<=itemScrollNav.offsetTop+ itemScrollNav.offsetHeight){
+            return ({
+                id: index,
+                name: item.name,
+                start: itemScrollNav? itemScrollNav.offsetTop- heightNav.current.offsetHeight : 0  ,
+                end : itemScrollNav? (itemScrollNav.offsetTop+ itemScrollNav.offsetHeight) :0 
+            })
+        })
+    }
+   
+    useEffect(()=>{
+
+        heightScroll>0 && heigthFeature.forEach(item =>{
+            let check=false;
+
+            heigthFeature.forEach(item =>{
+                if(heightScroll>= item.start && heightScroll<= item.end){
+                    check= true;
+                }
                 
+            })
+            if(heightScroll>= item.start && heightScroll<= item.end ){
                 setActive(item.name);
+            }
+            
+            if(!check){
+                setActive('')
             }
         })
     },[heightScroll])
@@ -59,25 +63,20 @@ function Navbar() {
     },[])
 
     return ( 
-        <div className={`navbar-wrapper ${heightScroll>0? 'navbar-white':''}`}>
+        <div ref={heightNav} className={`navbar-wrapper ${heightScroll>0? 'navbar-white':''}`}>
             <div className={`navbar wrapper `}>
             <div className="navbar-container ">
                 <div className="navbar-logo">
-                    <h3 className="logo">Startup Landing</h3>
+                    <a href='#' className="logo">Startup Landing</a>
                 </div>
                 <ul className="nav-links ">
-                    <li onClick={()=>setActive('home')} className={`nav-link ${active==='home' ? 'active': ''}`}>
-                        <a href="#">Home</a>
-                    </li>
-                    <li onClick={()=>setActive('feature')} className={`nav-link ${active==='feature' ? 'active': ''}`}>
-                        <a href="#feature">Features</a>
-                    </li>
-                    <li onClick={()=>setActive('testimonial')} className={`nav-link ${active==='testimonial'?'active': ''}`}>
-                        <a href="#testimonial">Testimonial</a>
-                    </li>
-                    <li onClick={()=>setActive('price')} className={`nav-link ${active==='price'?'active': ''}`}>
-                        <a href="#price">Pricing</a>
-                    </li>
+                    {
+                        navLink.map((item, index) =>(
+                            <li key={index} onClick={()=>setActive(item.name)} className={`nav-link ${active===item.name ? 'active': ''}`}>
+                                <a href={item.link}>{item.name}</a>
+                            </li>
+                        ))
+                    }
                 </ul>
                 <div className="nav-right">
                     <button className="btn">Get Started</button>
@@ -94,18 +93,14 @@ function Navbar() {
                     <i className="fa-sharp fa-solid fa-xmark"></i>
                     </div>
                     <ul className="menu-links ">
-                        <li onClick={()=>setActive('home')} className={`menu-link ${active==='home'?'active': ''}`}>
-                            <a href="#">Home</a>
-                        </li>
-                        <li onClick={()=>setActive('feature')} className={`menu-link ${active==='feature'?'active': ''}`}>
-                            <a href="#feature">Features</a>
-                        </li>
-                        <li onClick={()=>setActive('testimonial')} className={`menu-link ${active==='testimonial'?'active': ''}`}>
-                            <a href="#testimonial">Testimonial</a>
-                        </li>
-                        <li onClick={()=>setActive('pricing')} className={`menu-link ${active==='pricing'?'active': ''}`}>
-                            <a href="#price">Pricing</a>
-                        </li>
+                        
+                        {
+                        navLink.map((item, index) =>(
+                            <li  key={index} onClick={()=>setActive(item.name)} className={`menu-link ${active===item.name ? 'active': ''}`}>
+                                <a href={item.link}>{item.name}</a>
+                            </li>
+                        ))
+                    }
                     </ul>
                     <div className="menu-social">
                         <a target="_blank" rel="noreferrer" href='https://www.facebook.com/' className="menu-social-item"><i className="fa-brands fa-facebook-f"></i></a>

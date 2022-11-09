@@ -31,6 +31,12 @@
 .navbar-white .navbar-container{
     padding: 15px 0;
 }
+.navbar-white .navbar-logo .logo{
+    color: var(--colors-primary);
+}
+.navbar-logo .logo{
+    color: #fff;
+}
 .navbar-container{
     display: flex;
     justify-content: space-between;
@@ -47,6 +53,7 @@
     flex: 1;
 }
 .nav-link{
+    text-transform: capitalize;
     padding: 0 20px;
 }
 .nav-link a{
@@ -113,6 +120,8 @@
     justify-content: start;
 }
 .menu-link a{
+    text-transform: capitalize;
+
     display: block;
     color: var(--colors-text);
     padding: 20px 0;

@@ -16,7 +16,7 @@
     margin-top: 10px;
     margin-bottom: 60px;
 }
-.quality-items{
+.quality-items.v2{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
     padding: 0 40px;
@@ -54,7 +54,9 @@
 }
 
 @media screen and (min-width: 1220px) {
-    
+    .quality-items.v2{
+        grid-template-columns: repeat(3, 1fr);
+    }
     .quality-head h3{
         margin-bottom: 75px;
     }

@@ -18,7 +18,7 @@
 }
 .quality-items{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+    grid-template-columns: repeat(2,1fr);
     padding: 0 40px;
     
 }
@@ -54,9 +54,19 @@
         
     }
 }
+@media screen and (min-width: 1024px) {
+    .quality-items{
+        grid-template-columns: repeat(3,1fr);
+        
+    }
+}
 @media screen and (max-width: 768px) {
     .quality-items{
         margin-top: 2rem;
+        
+    }
+    .quality-items{
+        grid-template-columns: repeat(1,1fr);
         
     }
 }
