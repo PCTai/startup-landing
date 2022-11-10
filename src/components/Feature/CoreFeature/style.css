@@ -86,6 +86,7 @@
         margin: auto
     }
     .core-content{
+        padding-left: 0px;
         grid-area: h1;
         margin-top: 2rem;
         width: 100%;

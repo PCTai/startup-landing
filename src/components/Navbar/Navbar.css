@@ -105,7 +105,7 @@
     flex-direction: column;
     justify-content: space-between;
     transform: translateX(-100%);
-    transition: all 0.5s linear;
+    transition: all 0.3s ease-in-out;
 }
 .menu-close{
     position: absolute;

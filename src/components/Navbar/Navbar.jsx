@@ -96,7 +96,7 @@ function Navbar() {
                         
                         {
                         navLink.map((item, index) =>(
-                            <li  key={index} onClick={()=>setActive(item.name)} className={`menu-link ${active===item.name ? 'active': ''}`}>
+                            <li  key={index} onClick={()=>{setActive(item.name);showMenuLayout()  }} className={`menu-link ${active===item.name ? 'active': ''}`}>
                                 <a href={item.link}>{item.name}</a>
                             </li>
                         ))

@@ -41,8 +41,9 @@
     border: none;
 }
 .banner-support{
-    display: flex;
+    display: grid;
     align-items: center;
+    grid-template-columns: auto 1fr;
 }
 .banner-support-items{
     display: flex;

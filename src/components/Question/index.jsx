@@ -5,6 +5,17 @@ import {questions} from '../../constants'
 function Question() {
 
   const [active, setActive] =useState(1);
+
+
+  const handleToggleActive= (id) =>{
+    if(id === active){
+      setActive(0);
+    }
+    else{
+      setActive(id)
+    }
+    
+  }
   return (
     <div className="question-wrapper">
       <div className="question wrapper">
@@ -15,7 +26,7 @@ function Question() {
           </div>
           <div className="list-questions">
             {questions.map(item =>(
-                <div key={item.id} onClick={()=> setActive(item.id)} className={`question-item ${item.id===active ? 'active ' :''}`}>
+                <div key={item.id} onClick={(e)=> handleToggleActive(item.id,e.target)} className={`question-item ${item.id===active ? 'active ' :''}`}>
                     <div className="question-item-top">
                         {
                             item.id===active ?<i className="fa-solid fa-plus"></i> :<i className="fa-solid fa-minus"></i>

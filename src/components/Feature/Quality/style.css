@@ -63,10 +63,14 @@
 @media screen and (max-width: 768px) {
     .quality-items{
         margin-top: 2rem;
-        
     }
     .quality-items{
         grid-template-columns: repeat(1,1fr);
         
+    }
+}
+@media screen and (max-width: 468px) {
+    .quality-items{
+        padding: 0;
     }
 }
